@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="../../assets/styles/navbar.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="container-fluid m-0 ps-4 navbar-container">
+        <nav class="navbar navbar-expand-lg custom-navbar">
+            <a class="navbar-brand" href="../home/home.html"><img src="../../assets/images/Vanilla-removebg-preview.png"></a>
+            <button class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="toggler-icon top-bar"></span>
+                <span class="toggler-icon middle-bar"></span>
+                <span class="toggler-icon bottom-bar"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="../home/home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../vehicleSearch/vehicleSearch.html">Vehicle Search</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+    </div>
+    <div class="container">
+    <div class="row">
+        <div class="col mt-4 d-flex justify-content-center">
+            <h1 class="">Dashboard</h1>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="container mt-5">
+    <h2 class="mb-4">Car Details by ID</h2>
+    <div class="row m-4">
+        <div class="col d-flex justify-content-center">
+            <form id="carDetailsForm">
+                <div class="form-group">
+                    <label for="carIdInput">Enter car ID: </label>
+                    <input type="text" class="form-control" id="carIdInput" placeholder="Ex: '1'">
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+            
+        </div>
+    </div> -->
+
+    <!-- <div id="vehicleDetailsById2"></div>
+
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Year</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Mileage</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody class="vehicleDetailsById">
+
+        </tbody>
+
+    </table>
+</div> -->
+
+
+<div class="container mt-5">
+    <h2 class="mb-4">All Car Details</h2>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Year</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Mileage</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody id="vehicleTableBody">
+            
+        </tbody>
+    </table>
+</div>
+
+
+
+    <script type="module" src="/main.js"></script>
+    <script type="module" src="./dashboard.js"></script>
+</body>
+</html>
