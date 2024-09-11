@@ -57,7 +57,7 @@ class UserService {
             if (!user) {
 
                 const error = new Error('Invalid Username or Password');
-                error.statusCode(401);
+                error.statusCode = 401;
                 throw error;
             }
 
@@ -66,7 +66,7 @@ class UserService {
             if (!isPasswordValid) {
 
                 const error = new Error('Invalid Username or Password');
-                error.statusCode(401);
+                error.statusCode = 401;
                 throw error;
             }
 
