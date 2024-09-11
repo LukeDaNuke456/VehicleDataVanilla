@@ -27,7 +27,7 @@ class UserService {
             }
 
             const newUser = await UserDAO.registerNewUser({
-                
+
                 username,
                 email,
                 password_hash: (await this.hashPassword(password)).toString(),
@@ -40,13 +40,57 @@ class UserService {
 
         } catch (error) {
 
-            if(!error.statusCode) {
+            if (!error.statusCode) {
                 error.statusCode = 500;
             }
-            
-            // throw new Error('Unable to register user: ' + error);
+
             throw error;
         }
+    }
+
+    async login({ username, password }) {
+
+        try {
+
+            const user = await UserDAO.getUserByUsername(username);
+
+            if (!user) {
+
+                const error = new Error('Invalid Username or Password');
+                error.statusCode(401);
+                throw error;
+            }
+
+            const isPasswordValid = await bcrypt.compare(password, user.password_hash);
+
+            if (!isPasswordValid) {
+
+                const error = new Error('Invalid Username or Password');
+                error.statusCode(401);
+                throw error;
+            }
+
+            return {
+                //Only returning the specifics that we need
+                id: user.id,
+                username: user.username,
+                email: user.email,
+                role: user.role
+            }
+
+        }
+
+        catch (error) {
+
+            if (!error.statusCode) {
+                error.statusCode = 500;
+            }
+
+            throw error;
+
+        }
+
+
     }
 
     async hashPassword(password) {
