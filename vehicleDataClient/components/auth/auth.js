@@ -101,7 +101,9 @@ class Auth {
         this.displayToaster('Login Successful.', 'text-bg-success');
         
         const data = await response.json();
-        
+
+        localStorage.setItem('authToken', data.user.token);
+        window.location.href = '../home/home.html';
         console.log('Login successful:', data);
         
         // this.successfulRegisterRedirect();

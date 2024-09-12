@@ -2,6 +2,8 @@
 const UserDAO = require('../dao/userDAO');
 const UserDTO = require('../dto/userDTO');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 class UserService {
 
@@ -48,7 +50,7 @@ class UserService {
         }
     }
 
-    async login({ username, password }) {
+    async login({ username, password }, req) {
 
         try {
 
@@ -70,12 +72,21 @@ class UserService {
                 throw error;
             }
 
+            const token = jwt.sign({
+                userId: user.id, 
+                role: user.role}, 
+                process.env.SECRET_KEY, 
+                {expiresIn: '1h'}); 
+            
+            req.session.token = token;
+
             return {
                 //Only returning the specifics that we need
                 id: user.id,
                 username: user.username,
                 email: user.email,
-                role: user.role
+                role: user.role,
+                token
             }
 
         }

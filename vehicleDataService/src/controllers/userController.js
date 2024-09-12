@@ -42,7 +42,7 @@ class UserController {
             const user = await UserService.login({
                 username,
                 password,
-            });
+            }, req);
 
             res.status(201).json({
                 message: "User successfully logged in",
